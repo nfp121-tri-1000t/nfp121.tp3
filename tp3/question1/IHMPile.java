@@ -38,12 +38,16 @@ public class IHMPile extends JFrame implements ActionListener{
         if(ae.getActionCommand().equals("empiler")){
 
             // à compléter
-
+            if(p.estPleine()){
+               contenu.setText( contenu + "" + " estPleine !"); 
+            }
             // en cas d'exception
             //contenu.setText( /* à compléter */"" + " estPleine !");
 
         }else{
-
+            if(p.estVide()){
+                           contenu.setText( contenu + "" + " estVide !"); 
+             }
             // à compléter
             // en cas d'exception
             //contenu.setText( /* à compléter */"" + " estVide !");
