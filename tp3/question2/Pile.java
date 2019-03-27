@@ -1,5 +1,5 @@
 package question2;
-
+import java.util.*;
 import question1.PilePleineException;
 import question1.PileVideException;
 
@@ -11,50 +11,65 @@ import question1.PileVideException;
  */
 public class Pile implements PileI {
 
-    private Object[] zone;
+    
+    private Object[] zone;  
     private int ptr;
 
     public Pile(int taille) {
-        // traiter le cas <=0
-        // a completer
+         if (taille <= 0)
+            taille = CAPACITE_PAR_DEFAUT; // traiter le cas <=0
+           this.zone = new Object[taille];
+        this.ptr = 0; // a completer
     }
 
     public Pile() {
-        this(0);
+        this(CAPACITE_PAR_DEFAUT);
     }
 
     public void empiler(Object o) throws PilePleineException {
         // a completer
+           if (estPleine())
+            throw new PilePleineException();
+        this.zone[this.ptr] = o;
+
+
+        this.ptr++;
     }
 
     public Object depiler() throws PileVideException {
-        // a completer
-        return null;
+        if (estVide())
+            throw new PileVideException();
+        this.ptr--;
+        return this.zone[this.ptr];
+        //return null;
     }
 
     public Object sommet() throws PileVideException {
-        // a completer
-        return null;
+           if (estVide())
+            throw new PileVideException();// a completer
+       return this.zone[this.ptr];
     }
 
     public int capacite() {
         // a completer
-        return -1;
+        return this.zone.length;
+      
     }
-
+    
     public int taille() {
         // a completer
-        return -1;
+        return capacite()-this.ptr;
     }
 
     public boolean estVide() {
-        // a completer
-        return false;
+           return ptr == 0;// a completer
+        //return false;
     }
 
     public boolean estPleine() {
-        // a completer
-        return false;
+        
+        return this.ptr == capacite();// a completer
+       // return false;
     }
 
     public boolean equals(Object o) {
@@ -68,7 +83,14 @@ public class Pile implements PileI {
     }
 
     public String toString() {
-        // a completer
-        return null;
+         StringBuffer sb = new StringBuffer("[");
+        for (int i = ptr - 1; i >= 0; i--) {
+            sb.append(this.zone[i]);
+            if (i > 0)
+                sb.append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
+        //return null;
     }
 }
