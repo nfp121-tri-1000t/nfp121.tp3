@@ -35,7 +35,10 @@ public class Pile2 implements PileI {
 
     public void empiler(Object o) throws PilePleineException {
         // a completer
-      
+      //if (estVide())
+       //     throw new PilePleineException();
+          stk.push(o);  
+        //return stk.push(o);
     }
 
     public Object depiler() throws PileVideException {
@@ -47,8 +50,8 @@ public class Pile2 implements PileI {
 
     public Object sommet() throws PileVideException {
         // a completer
-          if (estVide())
-            throw new PileVideException();// a completer
+        //  if (estVide())
+        //    throw new PileVideException();// a completer
         return stk.peek();
     }
 
@@ -59,7 +62,14 @@ public class Pile2 implements PileI {
      */
     public boolean estVide() {
         // a completer
-               return stk.empty();
+        for (Object v : stk) {
+            if(v!=null) {
+             return false;
+            } else{
+                return true;
+            }
+        } 
+         return true;
     }
 
     /**
@@ -69,7 +79,10 @@ public class Pile2 implements PileI {
      */
     public boolean estPleine() {
         // a completer
-        return stk.lastElement() != null;
+        if(stk.lastElement() != null)
+                return true;
+        else 
+            return false;
     }
 
     /**
@@ -80,8 +93,14 @@ public class Pile2 implements PileI {
      */
     public String toString() {
         String s = "[";
-            
-       s= s+stk.toString();  
+         for (Object v : stk) {
+            if(v!=null) {
+             s= s+v.toString(); 
+              if(v!=stk.lastElement())  s=s+",";
+            } 
+           
+        }    
+        
         return s + "]";
     }
 
