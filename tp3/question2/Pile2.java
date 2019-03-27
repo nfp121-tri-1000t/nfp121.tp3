@@ -19,8 +19,13 @@ public class Pile2 implements PileI {
      *            la taille de la pile, la taille doit etre > 0
      */
     public Pile2(int taille) {
-        // prevoir le cas <=0
+          if (taille <= 0)
+            taille = CAPACITE_PAR_DEFAUT;// prevoir le cas <=0
         // a completer
+        stk = new Stack<Object>();
+        stk.setSize(taille);
+       
+  
     }
 
     // constructeur fourni
@@ -30,16 +35,21 @@ public class Pile2 implements PileI {
 
     public void empiler(Object o) throws PilePleineException {
         // a completer
+      
     }
 
     public Object depiler() throws PileVideException {
-        // a completer
-        return null;
+         if (estVide())
+            throw new PileVideException();
+    
+        return stk.pop();
     }
 
     public Object sommet() throws PileVideException {
         // a completer
-        return null;
+          if (estVide())
+            throw new PileVideException();// a completer
+        return stk.peek();
     }
 
     /**
@@ -49,7 +59,7 @@ public class Pile2 implements PileI {
      */
     public boolean estVide() {
         // a completer
-        return false;
+               return stk.empty();
     }
 
     /**
@@ -59,7 +69,7 @@ public class Pile2 implements PileI {
      */
     public boolean estPleine() {
         // a completer
-        return false;
+        return stk.lastElement() != null;
     }
 
     /**
@@ -70,7 +80,8 @@ public class Pile2 implements PileI {
      */
     public String toString() {
         String s = "[";
-        // a completer
+            
+       s= s+stk.toString();  
         return s + "]";
     }
 
@@ -91,7 +102,7 @@ public class Pile2 implements PileI {
      */
     public int taille() {
         // a completer
-        return 0;
+        return stk.capacity();
     }
 
     /**
@@ -101,7 +112,7 @@ public class Pile2 implements PileI {
      */
     public int capacite() {
         // a completer
-        return 0;
+        return stk.size();
     }
 
 } // Pile2.java
