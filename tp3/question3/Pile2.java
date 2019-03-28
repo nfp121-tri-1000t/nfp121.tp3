@@ -9,7 +9,7 @@ public class Pile2<T> implements PileI<T>{
     /** par délégation : utilisation de la class Stack */
     private Stack<T> stk;
     /** la capacité de la pile */
-    private int capacite;
+    private int capacitE;
 
     /** Création d'une pile.
      * @param taille la "taille maximale" de la pile, doit être > 0

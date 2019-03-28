@@ -106,7 +106,7 @@ public class Pile2 implements PileI {
 
     public boolean equals(Object o) {
         // a completer
-        return false;
+        return stk.equals(o);
     }
 
     // fonction fournie
